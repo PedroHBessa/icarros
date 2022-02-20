@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>iCarros-test</title>
+      <!--ITEM D, UMA DAS TRÊS FORMAS DE APLICAR ESTILOS CSS (ESTILO EXTERNO)-->
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <!--ITEM D, UMA DAS TRÊS FORMAS DE APLICAR ESTILOS CSS (ESTILO INCORPORADO)-->
+      <style type="text/css">
+         .container{
+         background-color: grey;
+         max-width: 80%;
+         margin: 0 auto;
+         }
+      </style>
+   </head>
+   <!--ITEM A, USO DOS ELEMENTOS SEMÂNTICOS DO HTML-->
+   <body>
+      <div class='container'>
+         <article class="hero">
+            <header>
+               <!--ITEM C, USO DO ALT PARA DESCREVER IMAGENS EM CASO DE NÃO CARREGAMENTO OU LEITORES DE ACESSIBILIDADE-->
+               <img src="./assets/icarros_logo.png" alt='logo do icarros. texto: Comprar e vender carros'>
+               <!--ITEM D, UMA DAS TRÊS FORMAS DE APLICAR ESTILOS CSS (ESTILO INLINE)-->
+               <h1 style="padding: 5px 0;">Bem-vindo ao iCarros</h1>
+               <p>A maior plataforma de negociação de veículos.</p>
+            </header>
+         </article>
+         <nav>
+            <ul class="menu">
+               <li><a href="/">HOME</a></li>
+               <li><a href="/">COMPRAR</a></li>
+               <li><a href="/">VENDER</a></li>
+               <li><a href="/">SOBRE</a></li>
+            </ul>
+         </nav>
+         <section style="padding: 30px">
+            <!--ITEM B, DIFERENCIAÇÃO DE DIV E SPAN-->
+            <div>Aqui é uma div, portanto ela ocupa a largura até o final, o proximo elemento será jogado para a linha de baixo</div>
+            <span>aqui é um span, portanto ele ocupa somente a largura de seu conteudo, o proximo elemento será jogado na mesma linha logo em seguida</span>
+            <span> - aqui é outro span</span>
+         </section>
+         <section  style="padding: 30px" class="funcao-add-6">
+            <form>
+               <input type="text" name="value" id='add6-value'>
+               <button type="button" value="Add 6" onclick="addSix(document.getElementById('add6-value').value)">ADD 6</button>
+               <div id="add-six-result"></div>
+            </form>
+         </section>
+         <!--ITEM F, AQUI FOI USADO CLASS POIS PODEREI USAR A MESMA FORMATAÇÃO DE ESTILO PARA A OUTRAS SESSÕES DE FUNCAO-->
+         <section  style="padding: 30px" class="funcao">
+            <form>
+               <input type="text" name="value" id='duplicate-value'>
+               <button type="button" value="duplicate" onclick="duplicate(document.getElementById('duplicate-value').value)">duplicate</button>
+               <!--ITEM F, AQUI FOI USADO ID POIS SERÁ A ÚNICA DIV QUE VAI RECEBER ESTILOS DUPLICATE-->
+               <div id="duplicate"></div>
+            </form>
+         </section>
+         <!--ITEM F, AQUI FOI USADO CLASS POIS PODEREI USAR A MESMA FORMATAÇÃO DE ESTILO PARA A OUTRAS SESSÕES DE FUNCAO-->
+         <section  style="padding: 30px" class="funcao">
+            <form>
+               <label>convert { "name": "Erick Schimdt", "age": 32, "height": 1.78} to an object</label>
+               <button type="button" value="duplicate" onclick="stringToObj()">convert</button>
+               <div id="convert"></div>
+            </form>
+         </section>
+         <section class="box-model">
+            <!--ITEM E, EXEMPLO DE BOX MODEL -->
+            <h2>exemplo de box model, com width, height, padding, border, e margin:</h2>
+            <div class="square">elemento</div>
+         </section>
+         <footer>
+            <p>Todos os direitos reservados</p>
+         </footer>
+      </div>
+      <script type="text/javascript">
+         //ITEM G, EXEMPLO DE SCOPE, A VARIAVEL AVAILABLE PODE SER ACESSADA POR QUALQUER FUNÇÃO DESSE SCRIPT.
+         var available;
+         
+         //ITEM H
+         var addSix = function(x){
+         
+         	//ITEM G, EXEMPLO DE SCOPE, O VAR NUMBER E RESULT PODEM SER UTILIZADOS DENTRO DE OUTROS LAÇOS OU FUNÇÕES DENTRO DA FUNÇÃO ADDSIX, NO ENTANTO NÃO PODEM SER ENCONTRADOS NO SCOPO GLOBAL
+         	var number = parseInt(x)
+         	var result;
+         	if(isNaN(number)){
+         		alert('valor inválido, digite um número.')
+         	} else {
+         		result = number + 6;
+         
+         		document.getElementById('add-six-result').innerHTML = result			;
+         		
+         	}
+         	}
+         	//ITEM I
+         var duplicate = function(x){
+         	 var valor = x.toLowerCase();
+            	 var array = valor.split("");
+            	 
+            	 var duplicateArray = array.concat(array)
+         		document.getElementById('duplicate').innerHTML = duplicateArray
+         	}
+         
+         	//ITEM J
+         var stringToObj = function(){
+         	var objString = '{ "name": "Erick Schimdt", "age": 32, "height": 1.78}'
+         	var obj = JSON.parse(objString)
+         	document.getElementById('convert').innerHTML = 'open the console'
+         	console.log(obj)
+         
+         }
+         
+         
+      </script>
+   </body>
+</html>
